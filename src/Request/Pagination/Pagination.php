@@ -6,7 +6,7 @@ namespace App\Request\Pagination;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
-final class PaginationRequest
+final class Pagination
 {
     /**
      * @var int|null

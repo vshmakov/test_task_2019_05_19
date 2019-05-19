@@ -9,12 +9,10 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-final class PaginationRequestType extends BaseApiType
+final class PaginationType extends BaseApiType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        parent::buildForm($builder, $options);
-
         $builder
             ->add('page', NumberType::class);
     }
@@ -24,7 +22,7 @@ final class PaginationRequestType extends BaseApiType
         parent::configureOptions($resolver);
 
         $resolver->setDefaults([
-            'data_class' => PaginationRequest::class,
+            'data_class' => Pagination::class,
         ]);
     }
 }

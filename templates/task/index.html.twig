@@ -7,14 +7,9 @@
 {% block body %}
     <h1>Tasks</h1>
     <div>
-        <table>
-            <tr>
-                <th>Sort</th>
-                <td></td>
-            </tr>
-        </table>
+        <h3>Sort tasks</h3>
+        {{ form(sortTasksForm) }}
 
-        <button type="submit">Submit</button>
     </div>
 
     <div>
@@ -51,7 +46,8 @@
 
     <div>
         {% for pageNumber in paginator %}
-            <a href="{{ path('task_index', {'page': pageNumber}) }}">
+            {% set parameters =  {'page': pageNumber} + app.request.query.all %}
+            <a href="{{ path('task_index', parameters) }}">
                 {{ pageNumber }}
             </a>
         {% endfor %}
