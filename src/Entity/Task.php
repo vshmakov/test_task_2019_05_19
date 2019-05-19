@@ -33,9 +33,9 @@ class Task
 
     /**
      * @var string|null
-     * @ORM\Column(length=2048)
+     * @ORM\Column
      */
-    private $description;
+    private $title;
 
     public function getId()
     {
@@ -67,13 +67,13 @@ class Task
         $this->email = $email;
     }
 
-    public function getDescription(): ?string
+    public function getTitle(): ?string
     {
-        return $this->description;
+        return $this->title;
     }
 
-    public function setDescription(?string $description): void
+    public function setTitle(?string $title): void
     {
-        $this->description = $description;
+        $this->title = $title;
     }
 }

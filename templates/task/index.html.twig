@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Homepage
+{% endblock %}
+
+{% block body %}
+    <h1>Tasks</h1>
+
+    <div>
+        {% for task in tasks %}
+            <div>
+                <h2>{{ task.title }}</h2>
+
+                <ul>
+                    <li>
+                        User: {{ task.username }}
+                    </li>
+                    <li>
+                        E-mail: {{ task.email }}
+                    </li>
+                </ul>
+            </div>
+        {% else %}
+            <div>
+                There is no tasks here.
+            </div>
+        {% endfor %}
+    </div>
+
+    <div>
+        {% for pageNumber in paginator %}
+            <a href="{{ path('task_index', {'page': pageNumber}) }}">
+                {{ pageNumber }}
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}
