@@ -23,6 +23,9 @@
         "symfony/twig-bundle": "4.2.*",
         "symfony/validator": "4.2.*",
         "symfony/web-link": "4.2.*",
+        "kunicmarko/sonata-auto-configure-bundle": "^0.7.1",
+        "sonata-project/admin-bundle": "^3.48",
+        "sonata-project/doctrine-orm-admin-bundle": "^3.9",
         "symfony/yaml": "4.2.*"
     },
     "require-dev": {
@@ -74,7 +77,7 @@
     },
     "extra": {
         "symfony": {
-            "allow-contrib": false,
+            "allow-contrib": true,
             "require": "4.2.*"
         }
     }

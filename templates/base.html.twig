@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-    <nav>
-        <ul>
-            <li>
-                <a href="{{  path('homepage') }}">
-                    Homepage
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+<nav>
+    <ul>
+        <li>
+            <a href="{{ path('homepage') }}">
+                Homepage
+            </a>
+        </li>
+        <li>
+            {% if is_granted('ROLE_USER') %}
+                <a href="{{ path('app_logout') }}">
+                    Logout
                 </a>
-            </li>
-        </ul>
-    </nav>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+            {% else %}
+                <a href="{{ path('app_login') }}">
+                    Login
+                </a>
+            {% endif %}
+        </li>
+    </ul>
+</nav>
+{% block body %}{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
 </html>
