@@ -37,6 +37,12 @@ class Task
      */
     private $title;
 
+    /**
+     * @var bool
+     * @ORM\Column(type="boolean")
+     */
+    private $isDone = false;
+
     public function getId()
     {
         return $this->id;
@@ -75,5 +81,15 @@ class Task
     public function setTitle(?string $title): void
     {
         $this->title = $title;
+    }
+
+    public function isDone(): bool
+    {
+        return $this->isDone;
+    }
+
+    public function setIsDone(bool $isDone): void
+    {
+        $this->isDone = $isDone;
     }
 }

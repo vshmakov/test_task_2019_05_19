@@ -35,6 +35,9 @@
                     <li>
                         E-mail: {{ task.email }}
                     </li>
+                    <li>
+                        Is done? {{  task.isDone ? 'Yes' : 'No' }}
+                    </li>
                 </ul>
             </div>
         {% else %}

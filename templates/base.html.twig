@@ -13,17 +13,25 @@
                 Homepage
             </a>
         </li>
-        <li>
-            {% if is_granted('ROLE_USER') %}
+
+        {% if is_granted('ROLE_USER') %}
+            <li>
+                <a href="{{  path('sonata_admin_dashboard') }}">
+                    Admin dashboard
+                </a>
+            </li>
+            <li>
                 <a href="{{ path('app_logout') }}">
                     Logout
                 </a>
-            {% else %}
+            </li>
+        {% else %}
+            <li>
                 <a href="{{ path('app_login') }}">
                     Login
                 </a>
-            {% endif %}
-        </li>
+            </li>
+        {% endif %}
     </ul>
 </nav>
 {% block body %}{% endblock %}

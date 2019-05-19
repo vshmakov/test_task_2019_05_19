@@ -19,6 +19,7 @@ final class SortTasksType extends BaseApiType
                 'choices' => [
                     'Username' => 'username',
                     'E-mail' => 'email',
+                    'Is done' => 'isDone',
                 ],
                 'label' => 'Field',
                 'property_path' => 'property',
