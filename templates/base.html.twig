@@ -6,6 +6,15 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+    <nav>
+        <ul>
+            <li>
+                <a href="{{  path('homepage') }}">
+                    Homepage
+                </a>
+            </li>
+        </ul>
+    </nav>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

@@ -24,6 +24,7 @@ use Symfony\Component\Routing\Annotation\Route;
 final class TaskController extends AbstractController
 {
     /**
+     * @Route("/", name="homepage", methods={"GET"})
      * @Route("/", name="task_index", methods={"GET"})
      */
     public function index(Request $request, EntityManagerInterface $entityManager): Response
@@ -48,14 +49,15 @@ final class TaskController extends AbstractController
             ->select('count(t)')
             ->getQuery()
             ->getSingleScalarResult();
+        $paginator = new Paginator($totalTasksCount, $pagination->getLength());
 
-        if ($totalTasksCount <= ($pagination->getPage() - 1) * $pagination->getLength()) {
+        if (!$paginator->supports($pagination->getPage())) {
             throw new NotFoundHttpException();
         }
 
         return $this->render('task/index.html.twig', [
             'tasks' => $tasks,
-            'paginator' => new Paginator($totalTasksCount, $pagination->getLength()),
+            'paginator' => $paginator,
             'sortTasksForm' => $sortTasksForm->createView(),
         ]);
     }

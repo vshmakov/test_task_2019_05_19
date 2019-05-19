@@ -45,11 +45,16 @@ final class Paginator implements \Iterator
 
     public function valid(): bool
     {
-        return $this->currentPage <= $this->totalPagesCount;
+        return $this->supports($this->currentPage);
     }
 
     public function rewind()
     {
         $this->currentPage = 1;
+    }
+
+    public function supports(int $page): bool
+    {
+        return $page <= $this->totalPagesCount;
     }
 }
