@@ -6,6 +6,27 @@
 
 {% block body %}
     <h1>Tasks</h1>
+    <div>
+        <table>
+            <tr>
+                <th>Sort</th>
+                <td></td>
+            </tr>
+        </table>
+
+        <button type="submit">Submit</button>
+    </div>
+
+    <div>
+        <h3>Actions</h3>
+        <ul>
+            <li>
+                <a href="{{ path('task_new') }}" role="button">
+                    Create task
+                </a>
+            </li>
+        </ul>
+    </div>
 
     <div>
         {% for task in tasks %}
