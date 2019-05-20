@@ -6,17 +6,17 @@
 
 {% block body %}
     <h1>Tasks</h1>
+
     <div>
         <h3>Sort tasks</h3>
         {{ form(sortTasksForm) }}
-
     </div>
 
     <div>
         <h3>Actions</h3>
         <ul>
             <li>
-                <a href="{{ path('task_new') }}" role="button">
+                <a href="{{ path('task_new') }}" role="button" class="btn btn-warning">
                     Create task
                 </a>
             </li>
@@ -47,7 +47,7 @@
         {% endfor %}
     </div>
 
-    <div>
+    <div class="pagination">
         {% for pageNumber in paginator %}
             {% set parameters =  {'page': pageNumber} + app.request.query.all %}
             <a href="{{ path('task_index', parameters) }}">
