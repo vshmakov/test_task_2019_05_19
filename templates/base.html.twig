@@ -1,12 +1,40 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+<nav>
+    <ul>
+        <li>
+            <a href="{{ path('homepage') }}">
+                Homepage
+            </a>
+        </li>
+
+        {% if is_granted('ROLE_USER') %}
+            <li>
+                <a href="{{  path('sonata_admin_dashboard') }}">
+                    Admin dashboard
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('app_logout') }}">
+                    Logout
+                </a>
+            </li>
+        {% else %}
+            <li>
+                <a href="{{ path('app_login') }}">
+                    Login
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
+{% block body %}{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
 </html>

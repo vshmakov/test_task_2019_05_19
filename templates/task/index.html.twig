@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Homepage
+{% endblock %}
+
+{% block body %}
+    <h1>Tasks</h1>
+    <div>
+        <h3>Sort tasks</h3>
+        {{ form(sortTasksForm) }}
+
+    </div>
+
+    <div>
+        <h3>Actions</h3>
+        <ul>
+            <li>
+                <a href="{{ path('task_new') }}" role="button">
+                    Create task
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div>
+        {% for task in tasks %}
+            <div>
+                <h2>{{ task.title }}</h2>
+
+                <ul>
+                    <li>
+                        User: {{ task.username }}
+                    </li>
+                    <li>
+                        E-mail: {{ task.email }}
+                    </li>
+                    <li>
+                        Is done? {{  task.isDone ? 'Yes' : 'No' }}
+                    </li>
+                </ul>
+            </div>
+        {% else %}
+            <div>
+                There is no tasks here.
+            </div>
+        {% endfor %}
+    </div>
+
+    <div>
+        {% for pageNumber in paginator %}
+            {% set parameters =  {'page': pageNumber} + app.request.query.all %}
+            <a href="{{ path('task_index', parameters) }}">
+                {{ pageNumber }}
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}
