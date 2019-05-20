@@ -14,7 +14,7 @@ System requirements
 Installation
 ----------------
 
-- git clone https://gitlab.org/shm-vadim/test_task_2019_05_19
+- git clone https://gitlab.com/shm-vadim/test_task_2019_05_19
 - cd test_task_2019_05_19
 - composer install --no-scripts
 - Create .env.local and set there your own DATABASE_URL like in .env
